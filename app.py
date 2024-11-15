@@ -93,7 +93,6 @@ model, class_names = initialize_model()
 
 @app.route("/", methods=["GET", "POST"])
 def predict():
-    print(request.get_json())
     try:
         if request.method == "GET":
             return jsonify({"status": "OK"}), 200
@@ -108,6 +107,8 @@ def predict():
         model_output = inference(model, model_input)
         result = postprocess(model_output, class_names)
         
+        
+        print(jsonify(result))
         return jsonify(result)
     
     except Exception as e:
