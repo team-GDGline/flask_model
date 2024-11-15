@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 14
+names: ['africanManatee', 'arowana', 'blackStingray', 'blacktipReefShark', 'californiaSeaLion', 'clownfish', 'gardenEel', 'giantGrouper', 'humboldtPenguin', 'leatherbackSeaTurtle', 'napoleonWrasse', 'piranha', 'smallClawedOtter', 'zebraShark']
+
+roboflow:
+  workspace: aquarium-wh8ik
+  project: aquarium-xj7ov
+  version: 4
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/aquarium-wh8ik/aquarium-xj7ov/dataset/4
