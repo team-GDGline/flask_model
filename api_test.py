@@ -3,9 +3,10 @@ import requests
 
 def test_yolo_api(image_path, api_url):
     # 이미지 파일 읽기
+
     with open(image_path, "rb") as image_file:
         image_base64 = base64.b64encode(image_file.read()).decode('utf-8')
-    
+
     # API 요청 데이터 준비
     payload = {
         "image": image_base64
@@ -19,4 +20,4 @@ def test_yolo_api(image_path, api_url):
     print("Response:", response.json())
 
 # 테스트
-test_yolo_api("image.png", "http://34.64.216.227:8080")
+test_yolo_api("image.png", "http://127.0.0.1:8080")

@@ -45,6 +45,13 @@ def initialize_model():
 
 # 이미지 전처리
 def preprocess(image_data):
+    decoded_data = base64.b64decode(image_data)
+    img_bgr = cv2.imdecode(np.frombuffer(decoded_data, np.uint8), cv2.IMREAD_COLOR)
+
+    # 디코딩 실패 시
+    if img_bgr is None:
+        raise ValueError("Failed to decode the image. Check if the Base64 data is valid.")
+
     img_bgr = cv2.imdecode(np.frombuffer(base64.b64decode(image_data), np.uint8), cv2.IMREAD_COLOR)
     img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
     img_resized = cv2.resize(img_rgb, (640, 640))
@@ -103,16 +110,12 @@ def predict():
         
         image_data = data.get("image")
 
-        print(1, image_data)
         model_input = preprocess(image_data)
         
-        print(2, model_input)
         model_output = inference(model, model_input)
-        
-        print(3, model_output)
+
         result = postprocess(model_output, class_names)
-        
-        print(4, jsonify(result))
+
         return jsonify(result)
     
     except Exception as e:
