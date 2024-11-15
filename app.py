@@ -45,13 +45,6 @@ def initialize_model():
 
 # 이미지 전처리
 def preprocess(image_data):
-    decoded_data = base64.b64decode(image_data)
-    img_bgr = cv2.imdecode(np.frombuffer(decoded_data, np.uint8), cv2.IMREAD_COLOR)
-
-    # 디코딩 실패 시
-    if img_bgr is None:
-        raise ValueError("Failed to decode the image. Check if the Base64 data is valid.")
-
     img_bgr = cv2.imdecode(np.frombuffer(base64.b64decode(image_data), np.uint8), cv2.IMREAD_COLOR)
     img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
     img_resized = cv2.resize(img_rgb, (640, 640))
