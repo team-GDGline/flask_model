@@ -20,8 +20,8 @@ RUN apt-get update && \
         && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set Python 3.9 as the default Python version
-RUN ln -s /usr/bin/python3.9 /usr/bin/python && \
-    ln -s /usr/bin/pip3 /usr/bin/pip
+RUN ln -sf /usr/bin/python3.9 /usr/bin/python && \
+    ln -sf /usr/bin/pip3 /usr/bin/pip
 
 # Copy the requirements file first to leverage Docker cache
 COPY requirements.txt .
