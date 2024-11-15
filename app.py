@@ -103,12 +103,16 @@ def predict():
         
         image_data = data.get("image")
 
+        print(1, image_data)
         model_input = preprocess(image_data)
+        
+        print(2, model_input)
         model_output = inference(model, model_input)
+        
+        print(3, model_output)
         result = postprocess(model_output, class_names)
         
-        
-        print(jsonify(result))
+        print(4, jsonify(result))
         return jsonify(result)
     
     except Exception as e:

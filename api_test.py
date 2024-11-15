@@ -19,4 +19,4 @@ def test_yolo_api(image_path, api_url):
     print("Response:", response.json())
 
 # 테스트
-test_yolo_api("image.png", "http://127.0.0:1:8080")
+test_yolo_api("image.png", "http://34.64.216.227:8080")
