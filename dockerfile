@@ -26,8 +26,9 @@ RUN ln -sf /usr/bin/python3.9 /usr/bin/python && \
 # Copy the requirements file first to leverage Docker cache
 COPY requirements.txt .
 
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Install Python dependencies, including torch separately for robustness
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir torch torchvision
 
 # Copy the rest of the application code
 COPY . .
